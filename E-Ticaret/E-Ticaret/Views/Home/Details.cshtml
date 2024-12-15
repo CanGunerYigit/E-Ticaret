@@ -1,0 +1,72 @@
+﻿@using E_Ticaret.Entity;
+@model  Product
+@{
+    ViewBag.Title = "Details";
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<div id="product-details" class="container pb-5 mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/Upload/@Model.Image" class="img-responsive w-100">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 style="font-size:20px; font-weight:700;">@Model.Name </h1>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    @if (Model.IsApproved)
+                    {
+                        <span class="badge badge-primary">Stokta</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Stokta Yok</span>
+
+                    }
+
+                    <span class="product-number">#@Model.Id  </span>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div id="description">@Model.Description</div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h4 id="product-price">
+                        @Model.Price
+                        <i class="fas fa-lira-sign" style=" color: green;"></i>
+                    </h4>
+
+
+
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+
+                    @using (Html.BeginForm("AddToCart","Cart"))
+                    {
+                        @Html.HiddenFor(i=>i.Id)
+                        <button type="submit" class="btn btn-success">
+                            Sepete Ekle <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                        </button>
+
+                    }
+
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<E_Ticaret.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<ul class="list-group pt-5">
+    <a href="/Home/List" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Tüm Kategoriler
+    </a>
+
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null) //seçilen kategori ile route id birbirine eşitse
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item active">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    @item.Name
+                </a>
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    @item.Name
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                @item.Name
+            </a>
+        }
+    }
+</ul>
+<style>
+    /* Aydınlık Tema */
+    body.light-mode .list-group-item {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+        body.light-mode .list-group-item.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+    /* Karanlık Tema */
+    body.dark-mode .list-group-item {
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+        body.dark-mode .list-group-item.active {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+</style>

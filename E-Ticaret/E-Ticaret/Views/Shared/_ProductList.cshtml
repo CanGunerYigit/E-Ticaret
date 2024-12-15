@@ -1,0 +1,93 @@
+﻿@using E_Ticaret.Models;
+@model IEnumerable<ProductModel>
+
+<link rel="stylesheet" href="~/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var urun in Model)
+    {
+        <div class="col d-flex align-items-stretch mb-5">
+            <div class="card">
+                <img src="/Upload/@urun.Image" class="card-img-top" alt="@urun.Name">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/Home/Details/@urun.Id"> @urun.Name</a>
+                    </h5>
+                    <p class="card-text">@urun.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        @urun.Price
+                        <i class="fas fa-lira-sign" style="color: green;"></i>
+                    </small>
+                    <a href="/Home/Details/@urun.Id" class="btn btn-default btn-sm float-right">
+                        Ürünü İncele
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<style>
+    /* Aydınlık Tema */
+    body.light-mode .card {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ccc;
+    }
+
+    body.light-mode .card-title a {
+        color: #000;
+    }
+
+    body.light-mode .card-text {
+        color: #333;
+    }
+
+    body.light-mode .card-footer {
+        background-color: #f8f9fa;
+        color: #000;
+    }
+
+    body.light-mode .btn-default {
+        background-color: #007bff;
+        color: white;
+    }
+
+        body.light-mode .btn-default:hover {
+            background-color: #0056b3;
+        }
+
+    /* Karanlık Tema */
+    body.dark-mode .card {
+        background-color: #333333;
+        color: #ffffff;
+        border: 1px solid #444;
+    }
+
+    body.dark-mode .card-title a {
+        color: #ffffff;
+    }
+
+    body.dark-mode .card-text {
+        color: #ccc;
+    }
+
+    body.dark-mode .card-footer {
+        background-color: #222;
+        color: #fff;
+    }
+
+    body.dark-mode .btn-default {
+        background-color: #1a73e8;
+        color: white;
+    }
+
+        body.dark-mode .btn-default:hover {
+            background-color: #0056b3;
+        }
+</style>

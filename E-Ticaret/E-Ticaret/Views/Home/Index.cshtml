@@ -1,0 +1,16 @@
+﻿@using E_Ticaret.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="custom-jumbotron container mb-5 mt-5" style="position: relative; border: 2px solid gray; border-radius: 20px; background-image: url('/theme/img/asd.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; color: white; display: flex; align-items: center; justify-content: center; ">
+    <div class="content" style="text-align: center; z-index: 1;">
+        <h1 class="display-4" style="font-size: 3rem; font-weight:700;">E-Ticaret</h1>
+       
+    </div>
+</div>
+
+<div class="container pb-5">
+    @Html.Partial("_ProductList", Model)
+</div>

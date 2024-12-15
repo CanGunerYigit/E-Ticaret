@@ -1,0 +1,34 @@
+﻿@using E_Ticaret.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "List";
+}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+<div class="container pb-5 ">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Action("GetCategories", "Home")
+        </div>
+        <div class="col-md-9 mt-5">
+            @if (Model.Count() == 0)
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    Belirtilen Kategoride Ürün Bulunamadı
+
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        @Model.Count() Adet Ürün Bulundu
+
+                </div>
+            }
+            @Html.Partial("_ProductList", Model)
+        </div>
+    </div>
+</div>
+
